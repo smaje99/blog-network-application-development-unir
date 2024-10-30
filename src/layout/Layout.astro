@@ -1,4 +1,6 @@
 ---
+import Navigation from "@/components/Navigation.astro";
+
 import "../styles/globals.css";
 
 interface Props {
@@ -42,7 +44,8 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-  <body>
+  <body class="mx-24">
+    <Navigation />
     <slot />
   </body>
 </html>
