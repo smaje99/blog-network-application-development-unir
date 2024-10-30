@@ -1,5 +1,12 @@
 ---
 import "../styles/globals.css";
+
+interface Props {
+  readonly title: string;
+  readonly description: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <script is:inline>
@@ -26,7 +33,16 @@ import "../styles/globals.css";
   }
 </script>
 
+<!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
   <body>
+    <slot />
   </body>
 </html>

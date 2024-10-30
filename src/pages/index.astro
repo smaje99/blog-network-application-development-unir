@@ -1,17 +1,19 @@
 ---
-import "@/styles/globals.css";
-
+import Layout from "@/layout/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+	title="Tech Blog by Sergio Majé"
+	description={
+		"Blog de tecnología y desarrollo web de Sergio Majé. " +
+		"Presentado para la actividad de creación de un blog de la asignatura " +
+		"Desarrollo de Aplicaciones en Red de la UNIR."
+	}
+>
+	<h1>Bienvenido a Tech Blog</h1>
+	<p>
+		¡Hola! Soy Sergio Majé, desarrollador web y estudiante de la UNIR. En este blog
+		iré publicando artículos sobre tecnología y desarrollo web. ¡Espero que te
+		gusten!
+	</p>
+</Layout>
