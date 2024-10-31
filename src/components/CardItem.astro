@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+import Separator from "./Separator.astro";
+import { buttonVariants } from './ui/button';
+import { cn } from "@/lib/utils";
+
+interface Props {
+  readonly post: CollectionEntry<"blog">;
+}
+
+const {
+  post: { slug, data: { title, excerpt, cover, date } },
+} = Astro.props;
+---
+
+<li class="w-fit flex flex-col gap-3 p-3 bg-secondary/60 rounded-lg shadow-lg">
+  <Image
+    src={cover}
+    alt={title}
+    class="w-64 h-40 object-cover aspect-video shadow-lg rounded-lg"
+    width={260}
+    height={160}
+  />
+  <h3>{title}</h3>
+  <p class="text-ellipsis">{excerpt}</p>
+  <time datetime={date.toISOString()}>
+    <small class="text-foreground/75">
+      {
+        date.toLocaleDateString("es-CO", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </smallb>
+  </time>
+
+  <a href={`/blog/${slug}`} class={cn(buttonVariants({}), 'w-max')}>
+    Leer más
+  </a>
+</li>

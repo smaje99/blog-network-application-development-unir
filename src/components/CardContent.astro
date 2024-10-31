@@ -1,0 +1,17 @@
+<ul class="card-content">
+  <slot />
+</ul>
+
+<style>
+  .card-content {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+
+    display: grid;
+    gap: 20px;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(260, 1fr));
+    grid-auto-flow: column;
+  }
+</style>

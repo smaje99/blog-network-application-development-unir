@@ -1,19 +1,35 @@
 ---
+import { getCollection } from "astro:content";
+
+import CardContent from "@/components/CardContent.astro";
 import Layout from "@/layout/Layout.astro";
+import CardItem from "@/components/CardItem.astro";
+
+const response = await getCollection("blog");
+const blogPosts = response.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
 ---
 
 <Layout
-	title="Tech Blog by Sergio Majé"
-	description={
-		"Blog de tecnología y desarrollo web de Sergio Majé. " +
-		"Presentado para la actividad de creación de un blog de la asignatura " +
-		"Desarrollo de Aplicaciones en Red de la UNIR."
-	}
+  title="Tech Blog by Sergio Majé"
+  description={"Blog de tecnología y desarrollo web de Sergio Majé. " +
+    "Presentado para la actividad de creación de un blog de la asignatura " +
+    "Desarrollo de Aplicaciones en Red de la UNIR."}
 >
-	<h1>Bienvenido a Tech Blog</h1>
-	<p>
-		¡Hola! Soy Sergio Majé, desarrollador web y estudiante de la UNIR. En este blog
-		iré publicando artículos sobre tecnología y desarrollo web. ¡Espero que te
-		gusten!
-	</p>
+  <header class="mt-4 space-y-4">
+    <h1 class="">Bienvenido a Tech Blog!</h1>
+    <p>
+      ¡Hola! Soy Sergio Majé, desarrollador web y estudiante de la UNIR. En este
+      blog iré publicando artículos sobre tecnología y desarrollo web. ¡Espero
+      que te gusten!
+    </p>
+  </header>
+  <main class="my-14">
+    <h2>Mis últimas ideas</h2>
+
+    <CardContent>
+      {blogPosts.map((post) => <CardItem post={post} />)}
+    </CardContent>
+  </main>
 </Layout>
