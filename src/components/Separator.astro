@@ -1,1 +1,9 @@
-<span class="inline-block bg-accent h-1 w-full"></span>
+---
+interface Props {
+  readonly class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<span class:list={["inline-block bg-accent h-1 w-full", className]}></span>
