@@ -2,8 +2,7 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
-import Separator from "./Separator.astro";
-import { buttonVariants } from './ui/button';
+import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -11,7 +10,10 @@ interface Props {
 }
 
 const {
-  post: { slug, data: { title, excerpt, cover, date } },
+  post: {
+    slug,
+    data: { title, excerpt, cover, date },
+  },
 } = Astro.props;
 ---
 
@@ -23,8 +25,8 @@ const {
     width={260}
     height={160}
   />
-  <h3>{title}</h3>
-  <p class="text-ellipsis">{excerpt}</p>
+  <h3 class="title">{title}</h3>
+  <p class="excerpt">{excerpt}</p>
   <time datetime={date.toISOString()}>
     <small class="text-foreground/75">
       {
@@ -34,10 +36,32 @@ const {
           day: "numeric",
         })
       }
-    </smallb>
+    </small>
   </time>
 
-  <a href={`/blog/${slug}`} class={cn(buttonVariants({}), 'w-max')}>
+  <a href={`/blog/${slug}`} class={cn(buttonVariants({}), "w-max")}>
     Leer más
   </a>
 </li>
+
+<style>
+  .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @apply text-lg;
+  }
+
+  .excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @apply text-sm;
+  }
+</style>
