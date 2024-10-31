@@ -1,0 +1,89 @@
+---
+title: "Cómo Truncar Múltiples Líneas de Texto con CSS"
+date : "2024-10-31"
+excerpt: "Truncar texto puede ser útil cuando necesitas limitar la cantidad de contenido visible en tarjetas, listas o elementos de UI sin cortar palabras en cualquier punto. Aquí te explicamos cómo lograr truncar texto en múltiples líneas usando propiedades modernas de CSS que mantendrán tu diseño limpio y legible."
+cover: "/public/images/display-css.webp"
+---
+
+## 1. Usar `-webkit-line-clamp` para Limitar Líneas de Texto
+El método más común para truncar múltiples líneas en CSS es usar `-webkit-line-clamp`. Este enfoque solo requiere unas pocas líneas de CSS, pero funciona principalmente en navegadores basados en WebKit (como Chrome, Safari y Edge). Esta técnica corta el texto y agrega puntos suspensivos (`...`) al final si se excede el número de líneas definido.
+
+### Código CSS
+```css
+.truncate-multiple-lines {
+  display: -webkit-box;         /* Define el elemento como un contenedor flex de varias líneas */
+  -webkit-line-clamp: 4;        /* Limita el texto a un máximo de 4 líneas */
+  -webkit-box-orient: vertical; /* Orienta el texto verticalmente */
+  overflow: hidden;             /* Oculta el texto que sobrepasa */
+  text-overflow: ellipsis;      /* Añade puntos suspensivos (...) al final del texto */
+}
+```
+
+### Explicación de las Propiedades
+* `display: -webkit-box;` establece el contenedor en modo `flex` vertical, permitiendo que el truncado afecte al bloque de texto.
+* `-webkit-line-clamp: 4;` define el número máximo de líneas que se mostrarán (puedes ajustarlo según tus necesidades).
+* `overflow: hidden;` y `text-overflow: ellipsis;` aseguran que el texto sobrante se oculte y que se muestre un `...` al final.
+
+### Ejemplo de Uso
+```html
+<div class="truncate-multiple-lines">
+  Este es un texto largo que se cortará después de cuatro líneas. Si el contenido excede el número de líneas especificado, el texto será truncado y se mostrarán puntos suspensivos al final, manteniendo el diseño limpio y manejable para el usuario.
+</div>
+```
+
+Este método es sencillo y eficaz, aunque su compatibilidad es limitada a navegadores que soportan WebKit.
+
+## 2. Método Alternativo con Propiedades Flexibles de CSS para Mejor Compatibilidad
+Para tener más control y mayor compatibilidad, se puede usar CSS Grid o Flexbox en combinación con `overflow` y `max-height`. Este método es algo más complejo, pero permite un efecto de truncado con más compatibilidad, aunque no añade los puntos suspensivos (`...`).
+
+### Código CSS con Flexbox
+```css
+.truncate-lines-flex {
+  display: flex;
+  flex-direction: column;    /* Alinea el texto verticalmente */
+  overflow: hidden;          /* Oculta el contenido extra */
+  max-height: 6em;           /* Ajusta el límite de altura, aquí para 4 líneas con línea base de 1.5 */
+  line-height: 1.5;          /* Define la altura de cada línea */
+}
+```
+
+### Ejemplo en HTML
+```html
+<div class="truncate-lines-flex">
+  Aquí tienes un texto largo que se truncará sin mostrar más de cuatro líneas. Este método es compatible con más navegadores, aunque no mostrará puntos suspensivos al final.
+</div>
+```
+
+**Nota**: Ajusta `max-height` según el número de líneas y la altura de línea deseadas. Si `line-height` es `1.5`, usa `6em` para truncar después de 4 líneas (`1.5 * 4 = 6`).
+
+## 3. Método Puro con `mask-image` y `linear-gradient`
+Para un enfoque sin dependencias de WebKit, `mask-image` permite crear un efecto de desvanecimiento al final del texto, aunque sin puntos suspensivos.
+
+### Código CSS
+```css
+.truncate-mask {
+  display: block;
+  max-height: 6em;                  /* Ajusta la altura máxima */
+  line-height: 1.5;                 /* Define la altura de cada línea */
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, black, transparent 90%);
+}
+```
+
+### Ejemplo de Uso
+```html
+<div class="truncate-mask">
+  Este texto se truncará con un desvanecimiento en la última línea visible. Este método no es tan común, pero da un aspecto elegante y profesional al cortar texto de forma gradual.
+</div>
+```
+
+**Nota**: Este método crea un degradado que hace que el texto desaparezca gradualmente, lo cual puede ser visualmente atractivo, aunque no añade puntos suspensivos.
+
+## Conclusión
+La mejor opción depende de tus necesidades y compatibilidad deseada:
+
+* `-webkit-line-clamp`: Fácil de usar, añade puntos suspensivos y es ideal si solo necesitas soporte para WebKit.
+* Flexbox/Grid con `max-height`: Más compatible, aunque no añade puntos suspensivos.
+* `mask-image` con degradado: Proporciona un efecto visual elegante sin puntos suspensivos.
+
+Cada método tiene sus ventajas y limitaciones. Escoge el que mejor se adapte a la experiencia de usuario y compatibilidad que deseas en tu proyecto.
