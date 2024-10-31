@@ -75,6 +75,10 @@
   body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+
+    scroll-behavior: smooth;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--background));
+    scrollbar-width: thin;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -92,23 +96,23 @@
   }
 
   h1 {
-    font-size: 3.368rem; /* 53.888px */
+    font-size: 3.031rem; /* 48.499px */
   }
 
   h2 {
-    font-size: 2.526rem; /* 40.448px */
+    font-size: 2.273rem; /* 36.403px */
   }
 
   h3 {
-    font-size: 1.895rem; /* 30.336px */
+    font-size: 1.705rem; /* 27.302px */
   }
 
   h4 {
-    font-size: 1.422rem; /* 22.784px */
+    font-size: 1.280rem; /* 20.506px */
   }
 
   h5 {
-    font-size: 1.066rem; /* 17.024px */
+    font-size: 0.959rem; /* 15.322px */
   }
 
   small {
