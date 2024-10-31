@@ -1,14 +1,38 @@
 ---
-title: "Terminal beautiful"
-date : "2024-10-29"
-excerpt: "Terminal beautiful"
+title: "Personalización de la Shell de Ubuntu en WSL"
+date : "2023-11-20"
+excerpt: "Este post cubre los pasos principales para personalizar la Shell de Ubuntu en WSL. Las herramientas y configuraciones presentadas no solo mejoran la apariencia, sino también la funcionalidad y productividad en la terminal."
 cover: "/public/images/terminal.webp"
 ---
 
-# Terminal beautiful
+## Introducción
+En este laboratorio, exploramos la personalización de la Shell de Ubuntu en el Subsistema de Windows para Linux (WSL) ejecutándose en Windows 11. Desde la instalación hasta las mejoras visuales y funcionales, se configuraron elementos clave para optimizar la experiencia de usuario en la terminal.
+
+## Instalación de WSL y Ubuntu
+1. Habilitar WSL: Ejecutar `wsl --install` en PowerShell para instalar WSL junto con la distribución de Ubuntu.
+2. Reinicio: Tras la instalación, reiniciar el equipo para aplicar los cambios.
+3. Configuración inicial: Al abrir Ubuntu, definir el `username` y `password` necesarios.
+
+## Uso de Windows Terminal
+Para una mejor experiencia, se recomienda instalar Windows Terminal desde Microsoft Store. Este emulador permite configurar visualmente la terminal y personalizar el perfil de Ubuntu.
+
+## Configuración Visual del Perfil de Ubuntu
+1. Colores y fuente: Cambiar a la combinación de colores "Campbell" y utilizar una fuente tipo Nerd Font como CaskaydiaCove Nerd Font Mono.
+2. Estilo del cursor: Configurar como barra en lugar de cuadro.
+3. Fondo y opacidad: Añadir una imagen de fondo con opacidad al 30% y activar el efecto acrílico.
+
+## Personalización del Promt con ZSH y Oh My ZSH
+Para una experiencia de promt mejorada:
+
+1. Instalación de ZSH: Instalar con `sudo apt install zsh` y establecerlo como Shell predeterminada con `chsh -s $(which zsh)`.
+2. Framework Oh My ZSH: Instalar Oh My ZSH para añadir plugins y temas que personalizan el promt. Comandos:
 
 ```bash
-echo "Hello World"
+sudo apt install curl wget git
+sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-This is my terminal post.
+3. Configuración del archivo `.zshrc`: Agregar temas y plugins como `git`, `command-not-found`, y `colored-man-pages`.
+
+## Mejora del Promt con Starship
+Finalmente, se configuró el promt con Starship, una opción rápida y personalizable escrita en Rust. Starship añade funciones avanzadas y control de versiones. Para configurarlo, crear el archivo `~/.config/starship.toml`.
