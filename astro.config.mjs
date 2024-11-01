@@ -11,8 +11,12 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 
 
+import sitemap from '@astrojs/sitemap';
+
+
 // https://astro.build/config
 export default defineConfig({
+  site: "https://blog-network-application-development-unir.vercel.app/",
   integrations: [
     tailwind({ applyBaseStyles: false }),
     mdx({
@@ -32,6 +36,7 @@ export default defineConfig({
         ]
       ]
     }),
-    react()
+    react(),
+    sitemap(),
   ]
 });
