@@ -13,5 +13,25 @@ export const { getStaticPaths, GET } = OGImageRoute({
   getImageOptions: async (_, { data, slug }: (typeof pages)[string]) => ({
     title: data.title,
     description: data.excerpt,
+    /* bgImage: {
+      path: `public/images/${path.basename(data.cover.src.split('?')[0])}`,
+      fit: 'cover',
+    }, */
+    bgGradient: [[150, 223 , 169]],
+    padding: 80,
+    font: {
+      title: {
+        size: 50,
+        weight: 'ExtraBold',
+        families: ["Inter", "Helvetica Neue", 'sans-serif'],
+        color: [13, 18, 14],
+      },
+      description: {
+        size: 30,
+        weight: 'Normal',
+        families: ["Inter", "Helvetica Neue", 'sans-serif'],
+        color: [13, 18, 14],
+      },
+    },
   }),
 });
