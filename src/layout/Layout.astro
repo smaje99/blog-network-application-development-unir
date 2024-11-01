@@ -6,9 +6,13 @@ import "../styles/globals.css";
 interface Props {
   readonly title: string;
   readonly description: string;
+  readonly ogImageURL?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImageURL = "/default-og.png" } = Astro.props;
+
+const siteURL = Astro.site || 'http://localhost:4321';
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
 ---
 
 <script is:inline>
@@ -42,8 +46,18 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_CO" />
   <body class="mx-24">
     <Navigation />
     <slot />
