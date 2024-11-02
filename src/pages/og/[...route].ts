@@ -10,7 +10,7 @@ const pages = Object.fromEntries(
 export const { getStaticPaths, GET } = OGImageRoute({
   param: 'route',
   pages,
-  getImageOptions: async (_, { data, slug }: (typeof pages)[string]) => ({
+  getImageOptions: async (_, { data }: (typeof pages)[string]) => ({
     title: data.title,
     description: data.excerpt,
     /* bgImage: {
