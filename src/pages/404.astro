@@ -1,0 +1,20 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import Layout from "@/layout/Layout.astro";
+---
+
+<Layout
+  title="BlogTech | Página No Encontrada"
+  description="Página no encontrada en BlogTech by Sergio Majé"
+>
+  <section class="w-full flex flex-col items-center gap-4">
+    <h1>404 😢</h1>
+    <p class="text-center leading-10">
+      Opps! Página no encontrada.<br />
+      La página que buscas no se encuentra o no esta disponible temporalmente.
+    </p>
+    <a href="/" class={buttonVariants({})}>
+      Volver al inicio
+    </a>
+  </section>
+</Layout>
