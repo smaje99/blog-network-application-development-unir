@@ -41,7 +41,7 @@ const ogImageUrl = `${siteURL}/og/${post.slug}.png`;
         width={650}
         height={300}
       />
-      <h1>{post.data.title}</h1>
+      <h1 class="leading-tight my-3">{post.data.title}</h1>
       <p class="text-secondary-foreground">{post.data.excerpt}</p>
       <div class="flex gap-4 mt-6">
         <Avatar
@@ -64,7 +64,19 @@ const ogImageUrl = `${siteURL}/og/${post.slug}.png`;
       <Separator />
     </header>
     <main
-      class="prose prose-headings:text-foreground text-foreground pt-12 pb-48"
+      class:list={[
+        "prose",
+        "prose-headings:text-foreground",
+        "prose-code:text-secondary-foreground",
+        "prose-code:rounded-lg",
+        "prose-code:px-1",
+        "prose-strong:text-foreground",
+        "prose-p:text-wrap",
+        "prose-li:marker:text-accent",
+        "prose-li:marker:font-medium",
+        "text-foreground",
+        "pt-12 pb-48"
+      ]}
     >
       <Content />
     </main>
